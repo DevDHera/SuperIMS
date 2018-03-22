@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="651.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superIMS.controller.AdminViewController">
+   <children>
+      <Pane fx:id="pnlSideMenu" layoutY="48.0" prefHeight="604.0" prefWidth="200.0" style="-fx-background-color: #2D3447;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="47.0">
+         <children>
+            <JFXButton fx:id="btnDashbord" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutY="216.0" onAction="#handleSideMenuActions" prefHeight="25.0" prefWidth="200.0" text="Dashboard" textFill="#fffdfd">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="TV" size="15" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnLogOut" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutX="-4.0" layoutY="449.0" onAction="#logOutAction" prefHeight="25.0" prefWidth="200.0" text="Log Out" textFill="#fffdfd">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" size="15" />
+               </graphic>
+            </JFXButton>
+            <ImageView fx:id="staffPic" fitHeight="116.0" fitWidth="137.0" layoutX="32.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblURole" alignment="CENTER" layoutX="77.0" layoutY="138.0" text="Label" textFill="#fffefe">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUName" alignment="CENTER" layoutX="77.0" layoutY="163.0" text="Label" textFill="#fffefe">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnRegUser" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="1.0" layoutY="265.0" onAction="#handleSideMenuActions" prefHeight="25.0" prefWidth="200.0" text="Register Users" textFill="#fffdfd">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="USER" size="15" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnReports" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="5.0" layoutY="319.0" onAction="#handleSideMenuActions" prefHeight="25.0" prefWidth="200.0" text="Reports" textFill="#fffdfd">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="BAR_CHART" size="15" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnSupplier" alignment="BASELINE_LEFT" graphicTextGap="30.0" layoutX="6.0" layoutY="368.0" onAction="#handleSideMenuActions" prefHeight="25.0" prefWidth="200.0" text="Suppliers" textFill="#fffdfd">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="BALANCE_SCALE" size="15" />
+               </graphic>
+            </JFXButton>
+         </children></Pane>
+      <Pane prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: #2D3447;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Pane fx:id="pnlDivider" layoutY="46.0" prefHeight="2.0" prefWidth="900.0" style="-fx-background-color: #1CB200;" />
+            <Label layoutX="59.0" layoutY="10.0" text="Super IMS" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnSideMenu" layoutY="11.0" prefHeight="26.0" prefWidth="28.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ALIGN_JUSTIFY" size="18" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnClose" layoutX="874.0" onAction="#closeViewAction" style="-fx-border-color: white;" text="X" textFill="WHITE" />
+            <JFXButton fx:id="btnMinmize" layoutX="848.0" onAction="#minAction" style="-fx-border-color: white;" text="-" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane fx:id="pnlView" layoutX="200.0" layoutY="47.0" prefHeight="604.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="47.0">
+         <children>
+            <Pane fx:id="pnlDashboard" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <Pane fx:id="pnlDashLoginStatus" layoutX="36.0" layoutY="24.0" prefHeight="249.0" prefWidth="264.0" style="-fx-border-color: #2D3447;">
+                     <children>
+                        <FontAwesomeIconView fill="#8a7878" glyphName="USER" layoutX="120.0" layoutY="40.0" size="30" />
+                        <Label layoutX="14.0" layoutY="81.0" text="Last Login     :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="125.0" text="Logout Time :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblLastLoginTime" layoutX="108.0" layoutY="81.0" text="DD/YY/MM" textFill="#1cb200">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblLastLogoutTime" layoutX="108.0" layoutY="125.0" text="DD/YY/MM" textFill="#1cb200">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="btnLoginStatusMore" layoutX="153.0" layoutY="184.0" onAction="#handleDashPanelButtons" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: #2746e4;" text="More" textFill="WHITE" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pnlDashUserSummery" layoutX="36.0" layoutY="296.0" prefHeight="249.0" prefWidth="264.0" style="-fx-border-color: #2D3447;">
+                     <children>
+                        <FontAwesomeIconView fill="#8a7878" glyphName="USER_PLUS" layoutX="121.0" layoutY="36.0" size="30" />
+                        <Label layoutX="10.0" layoutY="86.0" text="Number of Employees :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="125.0" text="Number of  Complaints :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNumberEmp" layoutX="169.0" layoutY="86.0" text="X" textFill="#1cb200">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblComplaints" layoutX="172.0" layoutY="123.0" text="X" textFill="#1cb200">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="btnUserSumMore" layoutX="154.0" layoutY="179.0" onAction="#handleDashPanelButtons" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: #2746e4;" text="More" textFill="WHITE" />
+                     </children></Pane>
+                  <Pane fx:id="pnlDashReportSummery" layoutX="377.0" layoutY="24.0" prefHeight="249.0" prefWidth="264.0" style="-fx-border-color: #2D3447;">
+                     <children>
+                        <FontAwesomeIconView fill="#8a7878" glyphName="BAR_CHART" layoutX="120.0" layoutY="40.0" size="30" />
+                        <Label layoutX="84.0" layoutY="46.0" text="Todays Summery">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="81.0" text="Number of Sales :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="16.0" layoutY="122.0" text="Total Amount :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNumberSales" layoutX="145.0" layoutY="81.0" text="XX" textFill="#1cb200">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblSaleAmount" layoutX="147.0" layoutY="119.0" text="XX" textFill="#1cb200">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="btnReportSumMore" layoutX="160.0" layoutY="179.0" onAction="#handleDashPanelButtons" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: #2746e4;" text="More" textFill="WHITE" />
+                     </children></Pane>
+                  <Pane fx:id="pnlDashSupplierSummery" layoutX="377.0" layoutY="296.0" prefHeight="249.0" prefWidth="264.0" style="-fx-border-color: #2D3447;">
+                     <children>
+                        <FontAwesomeIconView fill="#8a7878" glyphName="BALANCE_SCALE" layoutX="115.0" layoutY="40.0" size="30" />
+                        <Label layoutX="14.0" layoutY="83.0" text="Supplies Pending :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="122.0" text="Supplier Outstanding :">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblSupPending" layoutX="171.0" layoutY="83.0" text="XX" textFill="#b59e07">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblSupOuts" layoutX="173.0" layoutY="120.0" text="XX" textFill="#f50a0a">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXButton fx:id="btnSupplierSumMore" layoutX="165.0" layoutY="175.0" onAction="#handleDashPanelButtons" prefHeight="37.0" prefWidth="85.0" style="-fx-background-color: #2746e4;" text="More" textFill="WHITE" />
+                     </children></Pane>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlStaffDetails" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <TableView fx:id="tableStaffDetails" layoutX="36.0" layoutY="64.0" prefHeight="469.0" prefWidth="605.0">
+                    <columns>
+                      <TableColumn fx:id="colSID" prefWidth="93.0" text="Staff ID" />
+                      <TableColumn fx:id="colSFNAME" prefWidth="109.0" text="First Name" />
+                        <TableColumn fx:id="colSLNAME" prefWidth="116.0" text="Last Name" />
+                        <TableColumn fx:id="colSADDRESS" prefWidth="162.0" text="Address" />
+                        <TableColumn fx:id="colSPHNO" prefWidth="124.0" text="Tel" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="303.0" layoutY="23.0" text="Staff Details">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnSeeComp" layoutX="525.0" layoutY="552.0" onAction="#complaintAction" style="-fx-background-color: #103cdd;" text="See Complaints" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlComplaints" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <Label layoutX="285.0" layoutY="22.0" text="Staff Compalints">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tableComplaints" layoutX="37.0" layoutY="63.0" prefHeight="469.0" prefWidth="605.0">
+                    <columns>
+                      <TableColumn fx:id="colCOMPID" prefWidth="121.0" text="Complaint ID" />
+                      <TableColumn fx:id="colCOMPSID" minWidth="0.0" prefWidth="162.0" text="Staff ID" />
+                        <TableColumn fx:id="colComplaint" prefWidth="321.0" text="Complaint" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="btnComplaintBack" layoutX="593.0" layoutY="552.0" onAction="#complaintBackAction" style="-fx-background-color: #103cdd;" text="Back" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlRegUser" layoutX="1.0" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <Label layoutX="282.0" layoutY="22.0" text="Staff Registration">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="87.0" text="First Name :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="16.0" layoutY="130.0" text="Last Name :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="170.0" text="Gender :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="32.0" layoutY="212.0" text="Address :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtFName" layoutX="141.0" layoutY="87.0" />
+                  <JFXTextField fx:id="txtLName" layoutX="141.0" layoutY="126.0" />
+                  <JFXRadioButton fx:id="radMale" layoutX="127.0" layoutY="174.0" text="Male">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Gender" />
+                     </toggleGroup></JFXRadioButton>
+                  <JFXRadioButton fx:id="radFemale" layoutX="208.0" layoutY="174.0" text="Female" toggleGroup="$Gender" />
+                  <JFXTextArea fx:id="txtAddress" layoutX="135.0" layoutY="202.0" prefHeight="78.0" prefWidth="166.0" />
+                  <Label layoutX="68.0" layoutY="323.0" text="Tel :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtTel" layoutX="141.0" layoutY="319.0" />
+                  <Label layoutX="9.0" layoutY="374.0" text="Department :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbxDept" layoutX="141.0" layoutY="371.0" prefHeight="25.0" prefWidth="138.0" />
+                  <Label layoutX="9.0" layoutY="428.0" text="Designation :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbxDesi" layoutX="141.0" layoutY="430.0" prefHeight="25.0" prefWidth="138.0" />
+                  <JFXButton fx:id="btnRegNext" layoutX="570.0" layoutY="551.0" onAction="#handleRegPanelButtons" style="-fx-background-color: #103cdd;" text="Register" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Label layoutX="40.0" layoutY="473.0" text="Staff ID :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtSID" layoutX="141.0" layoutY="473.0" />
+                  <Label layoutX="43.0" layoutY="520.0" text="Picture :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnPic" layoutX="141.0" layoutY="518.0" onAction="#selectPic" prefHeight="30.0" prefWidth="144.0" text="Select Pic">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Label layoutX="13.0" layoutY="554.0" text="Temp PWD :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtPWD" layoutX="141.0" layoutY="554.0" />
+                  <JFXButton fx:id="btnGenSID" layoutX="313.0" layoutY="473.0" onAction="#handleRegPanelButtons" text="Generate Staff ID" />
+                  <JFXButton fx:id="btnGenPWD" layoutX="324.0" layoutY="554.0" onAction="#handleRegPanelButtons" text="Generate Password" />
+                  <Label layoutX="377.0" layoutY="375.0" text="Branch :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXComboBox fx:id="cbxBranch" layoutX="451.0" layoutY="375.0" prefHeight="25.0" prefWidth="70.0" />
+               </children>
+            </Pane>
+            <Pane fx:id="pnlReports" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <LineChart fx:id="dailySalesChart" layoutX="89.0" layoutY="89.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <Label layoutX="308.0" layoutY="25.0" text="Daily Sales">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnGenChart" layoutX="298.0" layoutY="525.0" onAction="#chartCreation" text="Generate Chart" />
+               </children></Pane>
+            <Pane fx:id="pnlSuppliers" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <Label layoutX="288.0" layoutY="22.0" text="Supplier Details">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tableSupplierDetails" layoutX="37.0" layoutY="63.0" prefHeight="469.0" prefWidth="605.0">
+                    <columns>
+                      <TableColumn fx:id="colSUPID" prefWidth="110.0" text="Supplier ID" />
+                      <TableColumn fx:id="colSUPNAME" prefWidth="130.0" text="Supplier Name" />
+                        <TableColumn fx:id="colSUPADD" prefWidth="234.0" text="Supplier Address" />
+                        <TableColumn fx:id="colSUPTEL" prefWidth="130.0" text="Tel" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="btnSupDetailsTable" layoutX="37.0" layoutY="552.0" onAction="#handleSupplierPanelAction" style="-fx-background-color: #103cdd;" text="Supplier Details" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnSupReg" layoutX="274.0" layoutY="551.0" onAction="#handleSupplierPanelAction" style="-fx-background-color: #103cdd;" text="Supplier Registration" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnSupplies" layoutX="560.0" layoutY="551.0" onAction="#handleSupplierPanelAction" style="-fx-background-color: #103cdd;" text="Supplies" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <Pane fx:id="pnlSupplierRegistration" prefHeight="604.0" prefWidth="700.0" />
+               </children></Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

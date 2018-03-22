@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="651.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.superIMS.controller.CashierViewController">
+   <children>
+      <Pane prefHeight="46.0" prefWidth="900.0" style="-fx-background-color: #2D3447;">
+         <children>
+            <Label layoutX="69.0" layoutY="10.0" text="Super IMS" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnSideMenu" layoutX="8.0" layoutY="11.0" prefHeight="25.0" prefWidth="34.0">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ALIGN_JUSTIFY" size="18" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnClose" layoutX="874.0" onAction="#closeViewAction" style="-fx-border-color: white;" text="X" textFill="WHITE" />
+            <JFXButton fx:id="btnMin" layoutX="848.0" onAction="#minAction" style="-fx-border-color: white;" text="-" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutY="46.0" prefHeight="2.0" prefWidth="900.0" style="-fx-background-color: #1CB200;" />
+      <Pane fx:id="pnlSideMenu" layoutY="48.0" prefHeight="604.0" prefWidth="200.0" style="-fx-background-color: #2D3447;">
+         <children>
+            <JFXButton fx:id="btnLogOut" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutY="382.0" onAction="#logOutAction" prefHeight="36.0" prefWidth="200.0" text="Log Out" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" size="15" />
+               </graphic>
+            </JFXButton>
+            <ImageView fx:id="staffPic" fitHeight="142.0" fitWidth="161.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="lblURole" layoutX="81.0" layoutY="176.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblUName" layoutX="81.0" layoutY="201.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btnNewBilling" alignment="BASELINE_LEFT" graphicTextGap="50.0" layoutX="-6.0" layoutY="322.0" onAction="#billingAction" prefHeight="36.0" prefWidth="200.0" text="New Billing" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" size="15" />
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="btnDashBoard" alignment="BASELINE_LEFT" graphicTextGap="40.0" layoutX="-3.0" layoutY="263.0" onAction="#showDashbord" prefHeight="36.0" prefWidth="200.0" text="Dashborad" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TV" size="15" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="pnlView" layoutX="200.0" layoutY="48.0" prefHeight="604.0" prefWidth="700.0">
+         <children>
+            <Pane fx:id="pnlDashbord" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <JFXButton fx:id="btnBilling" layoutX="288.0" layoutY="330.0" onAction="#billingAction" style="-fx-background-color: #1CB200;" text="Billing Portal" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <Label fx:id="lblWelcomeMsg" alignment="CENTER" layoutX="171.0" layoutY="229.0" text="Label">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlBilling" layoutX="-2.0" prefHeight="604.0" prefWidth="700.0">
+               <children>
+                  <Label layoutX="188.0" layoutY="101.0" text="Item :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="350.0" layoutY="25.0" text="Billing Portal">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="189.0" layoutY="181.0" text="QTY :">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnNextItem" layoutX="461.0" layoutY="263.0" onAction="#nextItemAction" style="-fx-background-color: blue;" text="Next Item" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnCal" layoutX="291.0" layoutY="329.0" onAction="#calculateAction" prefHeight="39.0" prefWidth="124.0" style="-fx-background-color: #1CB200;" text="Calculate" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXComboBox fx:id="cbxItems" layoutX="263.0" layoutY="101.0" prefHeight="25.0" prefWidth="161.0" />
+                  <JFXTextField fx:id="txtQty" layoutX="263.0" layoutY="181.0" prefHeight="25.0" prefWidth="161.0" />
+                  <TableView fx:id="tableItemCart" layoutX="98.0" layoutY="390.0" prefHeight="200.0" prefWidth="531.0">
+                    <columns>
+                      <TableColumn fx:id="colItemName" prefWidth="117.0" text="Item Name" />
+                      <TableColumn fx:id="colQty" prefWidth="137.0" text="QTY" />
+                        <TableColumn fx:id="colItemTot" prefWidth="276.0" text="Item Price" />
+                    </columns>
+                  </TableView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
