@@ -30,7 +30,7 @@
 ## Look into the SuperIMS
 
 1. Login Screen
-![Login Screen](../master/src/com/superIMS/assests/imgs/readmepics/superIMS-1.jpg)
+![Login Screen](https://github.com/DevDHera/SuperIMS/tree/master/src/com/superIMS/assests/imgs/readmepics/superIMS-1.jpg)
 
 1. Admin Panel
 ![Admin Panel](src/com/superIMS/assests/imgs/readmepics/superIMS-2.jpg)
