@@ -30,7 +30,11 @@
 ## Look into the SuperIMS
 
 1. Login Screen
+<<<<<<< HEAD
 ![Login Screen](../master/src/com/superIMS/assests/imgs/readmepics/superIMS-1.jpg)
+=======
+![Login Screen](src/com/superIMS/assests/imgs/readmepics/superIMS-1.jpg)
+>>>>>>> ca155bfa99d0a48dd2d6cfd44768f640897bfdbc
 
 1. Admin Panel
 ![Admin Panel](src/com/superIMS/assests/imgs/readmepics/superIMS-2.jpg)
